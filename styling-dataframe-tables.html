@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Pandas Sort - How to Order Your Data &mdash; Hedaro Blog</title>
+  <title>Styling Pandas Dataframe Tables &mdash; Hedaro Blog</title>
   <meta name="author" content="David Rojas">
 
 
@@ -45,9 +45,9 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Pandas Sort - How to Order Your Data</h1>
+      <h1 class="entry-title">Styling Pandas Dataframe Tables</h1>
     <p class="meta">
-<time datetime="2018-11-14T00:00:00-08:00" pubdate>Wed 14 November 2018</time>    </p>
+<time datetime="2018-11-18T00:00:00-08:00" pubdate>Sun 18 November 2018</time>    </p>
 </header>
 
   <div class="entry-content"><style type="text/css">/*!
@@ -125,8 +125,11 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This Notebook will cover all the techniques to quickly <strong><em>sort your data in Pandas</em></strong>. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an <strong><em>ascending</em></strong> or <strong><em>descending</em></strong> fashion, we have you covered.</p>
-<p>Let's start by importing our libraries.</p>
+<p>Styling Pandas dataframe tables just got a bit simpler. Keep reading to learn the hidden gem found within the Jupyter Notebook that makes this all possible.</p>
+<p>Now if you have played with the Jupyter Notebook and with Pandas you might have noticed that the default HTML tables are pretty basic. Most of us don't mind that since we are interested in the data and probaly not as much as how the data looks. But eventually you will be showing your notebook to someone and it is at this point where you start to look for ways to make your tables and charts look better.</p>
+<blockquote><p>This tutorial will show you how you can get your Pandas tables to look a bit better and it just takes a few lines of code to achieve.</p>
+</blockquote>
+<p>Let's begin by importing pandas.</p>
 </div>
 </div>
 </div>
@@ -147,7 +150,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Below is the version of Python and Pandas I am currently on.</p>
+<p>Here is what I'm currently set up with.</p>
 </div>
 </div>
 </div>
@@ -189,7 +192,7 @@ Pandas: 0.23.4
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">"MwaCzbh9Sd0"</span><span class="p">)</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">"Eiz4bwggQDY"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -198,7 +201,7 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<iframe allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/MwaCzbh9Sd0" width="400"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/Eiz4bwggQDY" width="400"></iframe>
 </div>
 </div>
 </div>
@@ -209,8 +212,8 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's get a dataframe up and running. We will be using a Python dictionary to generate some dummy data for this lesson. If you are new to the Pandas world and are not yet comfortable with dataframes, please take a look at my blog, <a href="https://blog.hedaro.com/Create_Pandas_DataFrame.html">how to create a dataframe</a> before you continue this lesson.</p>
-<p>After we print the dataframe, we will get two columns. The Rev columns are short for Revenue. So we have essentially two sets of revenue numbers.</p>
+<p>Here is a super basic dataframe we can use to show our example <strong><em>basic HTML table</em></strong>. It only has one column named <strong><em>hello</em></strong> and contains a few numbers.</p>
+<p>Again, I really don't have an issue with how the table looks. But if this was the table used in a presentation, I would say it could use a little help.</p>
 </div>
 </div>
 </div>
@@ -219,8 +222,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Rev'</span><span class="p">:[</span><span class="mi">234</span><span class="p">,</span><span class="mi">345</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">345</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
-                  <span class="s1">'Rev2'</span><span class="p">:[</span><span class="mi">345</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">4</span><span class="p">]})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'hello'</span><span class="p">:[</span><span class="mi">345</span><span class="p">,</span><span class="mi">657</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">]})</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -248,35 +250,25 @@ Pandas: 0.23.4
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>Rev</th>
-<th>Rev2</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
-<td>234</td>
 <td>345</td>
 </tr>
 <tr>
 <th>1</th>
-<td>345</td>
-<td>67</td>
+<td>657</td>
 </tr>
 <tr>
 <th>2</th>
-<td>7</td>
-<td>3</td>
+<td>9</td>
 </tr>
 <tr>
 <th>3</th>
-<td>345</td>
-<td>88</td>
-</tr>
-<tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
+<td>5</td>
 </tr>
 </tbody>
 </table>
@@ -291,7 +283,7 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Sorting Data</h2>
+<h2>Convert DataFrame to HTML</h2>
 </div>
 </div>
 </div>
@@ -300,11 +292,8 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If you watched my YouTube video, you will notice the dataframe method called <strong><em>sort</em></strong> is no longer available. I believe sort was deprecated back on Pandas version 0.17 and has been replaced with <strong><em>sort_values</em></strong>.</p>
-<p>sort_values requires you to pass in the <strong><em>by</em></strong> parameter. This parameter is used to tell Pandas by which column(s) do you want to order by.</p>
-<blockquote><p>The good news is that we can pass in a single string or a list of strings that represent column names.</p>
-</blockquote>
-<p>If you wanted to <strong><em>sort by the Rev column</em></strong>, you would simply pass in a string named 'Rev' as shown below. If you look at the index of the dataframe, you will notice it has changed. Instead of showing 0, 1, 2, 3, and 4, it shows a different order. And if you haven't picked up the pattern, the data has been sorted ascending (lowest to largest).</p>
+<p>There are a couple of things we have to do to get our table ready for a presentation. We are going to need to import the <strong><em>Jupyter HTML function</em></strong>. This is going to help us translate the HTML code we will generate and render it on the web page.</p>
+<p>This is very similar to the YouTube import we did earlier.</p>
 </div>
 </div>
 </div>
@@ -313,67 +302,8 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'Rev'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Rev</th>
-<th>Rev2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<th>2</th>
-<td>7</td>
-<td>3</td>
-</tr>
-<tr>
-<th>0</th>
-<td>234</td>
-<td>345</td>
-</tr>
-<tr>
-<th>1</th>
-<td>345</td>
-<td>67</td>
-</tr>
-<tr>
-<th>3</th>
-<td>345</td>
-<td>88</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -383,11 +313,16 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Pandas sorts your data ascending by default. But we can use the parameter called <strong>*ascending</strong> to order the data from largest to smallest or decending.</p>
-<ul>
-<li>ascending = <strong><em>True</em></strong> = smallest to largest</li>
-<li>ascending = <strong><em>False</em></strong> = largest to smallest</li>
-</ul>
+<p>Now that we have that complete, Pandas actually has the ability to convert a <strong><em>dataframe to an HTML table</em></strong>. By doing this we have the option to apply some CSS to our dataframe. If you are not familiar with CSS (Cascading Style Sheets) do not worry. In the web programming world, CSS helps us style the fonts, tables, and text we place in a web page. We are going to leverage this technology and apply some CSS to our dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong><em>.to_html</em></strong> simply gets our dataframe and converts it to a very basic HTML table as shown below.</p>
 </div>
 </div>
 </div>
@@ -396,7 +331,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'Rev'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -404,58 +339,8 @@ Pandas: 0.23.4
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Rev</th>
-<th>Rev2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1</th>
-<td>345</td>
-<td>67</td>
-</tr>
-<tr>
-<th>3</th>
-<td>345</td>
-<td>88</td>
-</tr>
-<tr>
-<th>0</th>
-<td>234</td>
-<td>345</td>
-</tr>
-<tr>
-<th>2</th>
-<td>7</td>
-<td>3</td>
-</tr>
-<tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>&apos;<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>hello</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>345</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>657</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>5</td>\n    </tr>\n  </tbody>\n</table>&apos;</pre>
 </div>
 </div>
 </div>
@@ -466,12 +351,8 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A cool trick you are also able to do is set the ascending parameter to equal a boolean value. We can use zeros and ones instead of True or False.</p>
-<ul>
-<li>ascending = <strong><em>1</em></strong> = smallest to largest</li>
-<li>ascending = <strong><em>0</em></strong> = largest to smallest</li>
-</ul>
-<p>It may not make much difference to use 0/1 vs True/False but I just wanted to make you aware of the possibility.</p>
+<p>If we wanted to actually render the HTML code in the notebook, we need make use of the HTML function we imported a few code cells ago.</p>
+<p>Notice we get the exact same looking dataframe as before.</p>
 </div>
 </div>
 </div>
@@ -480,7 +361,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'Rev'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -489,53 +370,29 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>Rev</th>
-<th>Rev2</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<th>2</th>
-<td>7</td>
-<td>3</td>
-</tr>
-<tr>
 <th>0</th>
-<td>234</td>
 <td>345</td>
 </tr>
 <tr>
 <th>1</th>
-<td>345</td>
-<td>67</td>
+<td>657</td>
+</tr>
+<tr>
+<th>2</th>
+<td>9</td>
 </tr>
 <tr>
 <th>3</th>
-<td>345</td>
-<td>88</td>
+<td>5</td>
 </tr>
 </tbody>
 </table>
@@ -544,13 +401,23 @@ Pandas: 0.23.4
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So how are we going to modify the HTML code or add some CSS to our dataframe?</p>
+<p>Well, before we continue you have to know <strong><em>the secret gem</em></strong> that comes with the <strong><em>Jupyter notebook</em></strong>...</p>
+<p>The Jupyter Notebook uses a special front-end framework called <a href="https://getbootstrap.com/docs/3.3/css/">Boostrap</a>. This means the entire Bootrap library is available to you and me. This means we can take advantage of any <strong>STYLING</strong> that comes with the Bootstrap framework. This means we can apply styles to HTML tables that come with Bootstrap. This means we can <strong>EASILY</strong> style our dataframes. Are you getting what I am saying?</p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Sorting with Multiple Columns</h2>
+<h2>Apply CSS to DataFrame</h2>
 </div>
 </div>
 </div>
@@ -559,8 +426,21 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can apply the same technique we have been going over but instead of passing in a string, we will need to pass in a Python list.</p>
-<p>Let's start with the same example as above but lets pass in the single string as a list. Did you see a difference? No, there wasn't.</p>
+<p>If you go to the <a href="https://getbootstrap.com/docs/3.3/css/#tables">tables section</a> you will notice that the Bootstap framework allows you to style tables. Hint. Hint.</p>
+<p>To apply the styles you need to simply make use of the <strong><em>class</em></strong> parameter. That's it!</p>
+<pre><code><table class="table table-striped">
+  ...
+</table></code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So does the pandas <strong><em>.to_html</em></strong> function allow us to pass in <strong><em>classes</em></strong>? YES YES YES!</p>
+<p>Let's give it a try.</p>
 </div>
 </div>
 </div>
@@ -569,7 +449,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'Rev'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="s1">'table table-striped'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -578,68 +458,34 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe table table-striped">
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>Rev</th>
-<th>Rev2</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<th>2</th>
-<td>7</td>
-<td>3</td>
-</tr>
-<tr>
 <th>0</th>
-<td>234</td>
 <td>345</td>
 </tr>
 <tr>
 <th>1</th>
-<td>345</td>
-<td>67</td>
+<td>657</td>
+</tr>
+<tr>
+<th>2</th>
+<td>9</td>
 </tr>
 <tr>
 <th>3</th>
-<td>345</td>
-<td>88</td>
+<td>5</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This means we can <strong><em>pass in multiple columns</em></strong> and Pandas will sort by the first and then sort by the second. Yes, I know that adding the second columns didn't really do much for us. But fear not, Pandas really is sorting both columns. The next example will clear things up.</p>
 </div>
 </div>
 </div>
@@ -648,7 +494,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'Rev'</span><span class="p">,</span> <span class="s1">'Rev2'</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="s1">'table table-bordered'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -657,72 +503,34 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe table table-bordered">
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>Rev</th>
-<th>Rev2</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>3</th>
+<th>0</th>
 <td>345</td>
-<td>88</td>
 </tr>
 <tr>
 <th>1</th>
-<td>345</td>
-<td>67</td>
-</tr>
-<tr>
-<th>0</th>
-<td>234</td>
-<td>345</td>
+<td>657</td>
 </tr>
 <tr>
 <th>2</th>
-<td>7</td>
-<td>3</td>
+<td>9</td>
 </tr>
 <tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
+<th>3</th>
+<td>5</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Notice that the first column as a value that is repeated twice. Yes, it is the value 345. The example above has the second column (Rev2) with values 88 and then 67. Pandas is sorting this column descending.</p>
-<p>If we change the sort order on Rev2, you will get a different result. We see that we now have 67 followed by 88.</p>
-<blockquote><p>If the first column (Rev) only had unique numbers, then ordering by the second column would be useless</p>
-</blockquote>
-<p>But since the value 345 was there twice. It really didn't matter the order they were placed by Pandas since they are equivalent. So when we changed the sort order for Rev2, we saw a change. Bam! Did you get it? I didn't loose you right?</p>
 </div>
 </div>
 </div>
@@ -731,7 +539,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'Rev'</span><span class="p">,</span> <span class="s1">'Rev2'</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="s1">'table table-hover'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -740,80 +548,34 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe table table-hover">
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>Rev</th>
-<th>Rev2</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>1</th>
-<td>345</td>
-<td>67</td>
-</tr>
-<tr>
-<th>3</th>
-<td>345</td>
-<td>88</td>
-</tr>
-<tr>
 <th>0</th>
-<td>234</td>
 <td>345</td>
+</tr>
+<tr>
+<th>1</th>
+<td>657</td>
 </tr>
 <tr>
 <th>2</th>
-<td>7</td>
-<td>3</td>
+<td>9</td>
 </tr>
 <tr>
-<th>4</th>
-<td>3</td>
-<td>4</td>
+<th>3</th>
+<td>5</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Sorting on a Different Axis</h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's say we have a dataframe shaped in a slightly different way. We can achieve this by transposing our current dataframe. A dataframe shaped like the one below will not work like the example we just went over.</p>
-<blockquote><p>df.T.sort_values('Rev', ascending = 1) <strong><em><< This code will fail <<</em></strong></p>
-</blockquote>
-<p>The reason this will not work is because there is no longer a column called Rev. The columns are now 0, 1, 2, 3, and 4.</p>
 </div>
 </div>
 </div>
@@ -822,7 +584,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="s1">'table table-condensed'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -831,51 +593,32 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe table table-condensed">
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>Rev</th>
-<td>234</td>
+<th>0</th>
 <td>345</td>
-<td>7</td>
-<td>345</td>
-<td>3</td>
 </tr>
 <tr>
-<th>Rev2</th>
-<td>345</td>
-<td>67</td>
-<td>3</td>
-<td>88</td>
-<td>4</td>
+<th>1</th>
+<td>657</td>
+</tr>
+<tr>
+<th>2</th>
+<td>9</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5</td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -886,8 +629,7 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As you have imaginned Pandas has a solution for us. And the saving grace is the parameter called <strong><em>axis</em></strong>. by setting this parameter to 1, Pandas will now look for row names instead of column names.</p>
-<p>The code below is sorting the data ascending (small to large) but it is sorting the numbers from left to right. Earlier in this lesson we were sorting the data vertically. Remember?</p>
+<p>We can also combine classes like shown below.</p>
 </div>
 </div>
 </div>
@@ -896,7 +638,7 @@ Pandas: 0.23.4
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'Rev'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="s1">'table table-striped table-bordered table-hover table-condensed'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -905,51 +647,32 @@ Pandas: 0.23.4
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe table table-striped table-bordered table-hover table-condensed">
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>4</th>
-<th>2</th>
-<th>0</th>
-<th>1</th>
-<th>3</th>
+<th>hello</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>Rev</th>
-<td>3</td>
-<td>7</td>
-<td>234</td>
-<td>345</td>
+<th>0</th>
 <td>345</td>
 </tr>
 <tr>
-<th>Rev2</th>
-<td>4</td>
-<td>3</td>
-<td>345</td>
-<td>67</td>
-<td>88</td>
+<th>1</th>
+<td>657</td>
+</tr>
+<tr>
+<th>2</th>
+<td>9</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5</td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -960,8 +683,7 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There was also an <strong><em>order</em></strong> method I explained a bit in the video but this has also been deprecated and we can simply use <strong><em>sort_values</em></strong> instead.</p>
-<p>Don't forget to comment below and ask me any questions you may have on sorting.</p>
+<p>Ans that's a wrap. As you can see, we can easily get our dataframe tables to look a bit cleaner and nicer. So if you are ever in a situation where you are presenting some data, here is an option to get your dataframes looking pretty. On top of all that, the extra code you had to write may may you look smarter.</p>
 </div>
 </div>
 </div>
@@ -1010,11 +732,11 @@ Pandas: 0.23.4
         David Rojas
     </span>
   </span>
-<time datetime="2018-11-14T00:00:00-08:00" pubdate>Wed 14 November 2018</time>  <span class="categories">
+<time datetime="2018-11-18T00:00:00-08:00" pubdate>Sun 18 November 2018</time>  <span class="categories">
     <a class='category' href='https://blog.hedaro.com/category/pandas.html'>pandas</a>
   </span>
   <span class="categories">
-    <a class="category" href="https://blog.hedaro.com/tag/pandas-sort.html">pandas sort</a>  </span>
+    <a class="category" href="https://blog.hedaro.com/tag/pandas-dataframe-to_html-style.html">pandas dataframe to_html style</a>,    <a class="category" href="https://blog.hedaro.com/tag/pandas-dataframe-format.html">pandas dataframe format</a>,    <a class="category" href="https://blog.hedaro.com/tag/styling-pandas-dataframe-tables.html">styling pandas dataframe tables</a>,    <a class="category" href="https://blog.hedaro.com/tag/styling-dataframe-tables.html">styling dataframe tables</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -1081,9 +803,9 @@ Pandas: 0.23.4
     </script>
   <script type="text/javascript">
     var disqus_shortname = 'hedaro';
-    var disqus_identifier = '/pandas-sort.html';
-    var disqus_url = 'https://blog.hedaro.com/pandas-sort.html';
-    var disqus_title = 'Pandas Sort - How to Order Your Data';
+    var disqus_identifier = '/styling-dataframe-tables.html';
+    var disqus_url = 'https://blog.hedaro.com/styling-dataframe-tables.html';
+    var disqus_title = 'Styling Pandas Dataframe Tables';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
