@@ -680,7 +680,7 @@ Pandas: 0.23.4
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas dataframe to_html style"></category><category term="pandas dataframe format"></category><category term="styling pandas dataframe tables"></category><category term="styling dataframe tables"></category></entry><entry><title>Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</title><link href="https://blog.hedaro.com/copy_from_clipboard.html" rel="alternate"></link><published>2018-11-17T00:00:00-08:00</published><updated>2018-11-17T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-17:/copy_from_clipboard.html</id><summary type="html">
+</content><category term="pandas dataframe to_html style"></category><category term="pandas dataframe format"></category><category term="styling pandas dataframe tables"></category><category term="styling dataframe tables"></category></entry><entry><title>Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</title><link href="https://blog.hedaro.com/copy-from-clipboard.html" rel="alternate"></link><published>2018-11-17T00:00:00-08:00</published><updated>2018-11-17T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-17:/copy-from-clipboard.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -3433,13 +3433,13 @@ memory usage: 608.0+ bytes
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas clipboard"></category><category term="dataframe clipboard"></category><category term="copy from clipboard"></category></entry><entry><title>Pandas Sort - How to Order Your Data</title><link href="https://blog.hedaro.com/pandas-sort.html" rel="alternate"></link><published>2018-11-14T00:00:00-08:00</published><updated>2018-11-14T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-14:/pandas-sort.html</id><summary type="html">
+</content><category term="pandas clipboard"></category><category term="dataframe clipboard"></category><category term="copy from clipboard"></category></entry><entry><title>Pandas Sort - How to Order Your DataFrame</title><link href="https://blog.hedaro.com/pandas-sort.html" rel="alternate"></link><published>2018-11-14T00:00:00-08:00</published><updated>2018-11-14T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-14:/pandas-sort.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This Notebook will cover all the techniques to quickly &lt;strong&gt;&lt;em&gt;sort your data in Pandas&lt;/em&gt;&lt;/strong&gt;. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an &lt;strong&gt;&lt;em&gt;ascending&lt;/em&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;em&gt;descending&lt;/em&gt;&lt;/strong&gt; fashion, we have you covered.&lt;/p&gt;
+&lt;p&gt;This Notebook will cover all the techniques to quickly &lt;strong&gt;&lt;em&gt;sort your dataframe in Pandas&lt;/em&gt;&lt;/strong&gt;. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an &lt;strong&gt;&lt;em&gt;ascending&lt;/em&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;em&gt;descending&lt;/em&gt;&lt;/strong&gt; fashion, we have you covered.&lt;/p&gt;
 &lt;p&gt;Let's start by importing our libraries.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3520,7 +3520,7 @@ memory usage: 608.0+ bytes
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This Notebook will cover all the techniques to quickly &lt;strong&gt;&lt;em&gt;sort your data in Pandas&lt;/em&gt;&lt;/strong&gt;. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an &lt;strong&gt;&lt;em&gt;ascending&lt;/em&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;em&gt;descending&lt;/em&gt;&lt;/strong&gt; fashion, we have you covered.&lt;/p&gt;
+&lt;p&gt;This Notebook will cover all the techniques to quickly &lt;strong&gt;&lt;em&gt;sort your dataframe in Pandas&lt;/em&gt;&lt;/strong&gt;. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an &lt;strong&gt;&lt;em&gt;ascending&lt;/em&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;em&gt;descending&lt;/em&gt;&lt;/strong&gt; fashion, we have you covered.&lt;/p&gt;
 &lt;p&gt;Let's start by importing our libraries.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3686,7 +3686,7 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2&gt;Sorting Data&lt;/h2&gt;
+&lt;h2&gt;Pandas Sort by Column&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3778,7 +3778,7 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Pandas sorts your data ascending by default. But we can use the parameter called &lt;strong&gt;*ascending&lt;/strong&gt; to order the data from largest to smallest or decending.&lt;/p&gt;
+&lt;p&gt;Pandas sorts your data ascending by default. But we can use the parameter called &lt;strong&gt;&lt;em&gt;ascending&lt;/em&gt;&lt;/strong&gt; to order the data from largest to smallest or decending.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ascending = &lt;strong&gt;&lt;em&gt;True&lt;/em&gt;&lt;/strong&gt; = smallest to largest&lt;/li&gt;
 &lt;li&gt;ascending = &lt;strong&gt;&lt;em&gt;False&lt;/em&gt;&lt;/strong&gt; = largest to smallest&lt;/li&gt;
@@ -4355,7 +4355,16 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;There was also an &lt;strong&gt;&lt;em&gt;order&lt;/em&gt;&lt;/strong&gt; method I explained a bit in the video but this has also been deprecated and we can simply use &lt;strong&gt;&lt;em&gt;sort_values&lt;/em&gt;&lt;/strong&gt; instead.&lt;/p&gt;
+&lt;h2&gt;Pandas Sort Series&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;There was also an &lt;strong&gt;&lt;em&gt;order&lt;/em&gt;&lt;/strong&gt; method I explained a bit in the video but this has also been deprecated and we can simply use &lt;strong&gt;&lt;em&gt;sort_values&lt;/em&gt;&lt;/strong&gt; instead. In an older version of Pandas order was used for a Pandas &lt;strong&gt;&lt;em&gt;series&lt;/em&gt;&lt;/strong&gt; since sort on;y worked for a dataframe. but like I mentioned, sort_values will work for both a dataframe and a series object.&lt;/p&gt;
 &lt;p&gt;Don't forget to comment below and ask me any questions you may have on sorting.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4397,7 +4406,7 @@ Pandas: 0.23.4
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas sort"></category></entry><entry><title>Pandas Plot - How to Create a Basic Pandas Visualization</title><link href="https://blog.hedaro.com/Create-Pandas-Visualization.html" rel="alternate"></link><published>2018-11-12T00:00:00-08:00</published><updated>2018-11-12T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-12:/Create-Pandas-Visualization.html</id><summary type="html">
+</content><category term="pandas sort"></category><category term="pandas sort series"></category><category term="pandas order"></category><category term="pandas dataframe order"></category><category term="pandas sort by column"></category></entry><entry><title>Pandas Plot - How to Create a Basic Pandas Visualization</title><link href="https://blog.hedaro.com/Create-Pandas-Visualization.html" rel="alternate"></link><published>2018-11-12T00:00:00-08:00</published><updated>2018-11-12T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-12:/Create-Pandas-Visualization.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -5970,7 +5979,7 @@ IiIiIiIeqCAXERERERER8UAFuYiIiIiIiIgH/x/rvpNQTFNEBwAAAABJRU5ErkJggg==
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas plot"></category><category term="pandas visualization"></category><category term="matplotlib pandas"></category></entry><entry><title>How to Create a Pandas DataFrame</title><link href="https://blog.hedaro.com/Create_Pandas_DataFrame.html" rel="alternate"></link><published>2018-11-11T00:00:00-08:00</published><updated>2018-11-11T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-11:/Create_Pandas_DataFrame.html</id><summary type="html">
+</content><category term="pandas plot"></category><category term="pandas visualization"></category><category term="matplotlib pandas"></category></entry><entry><title>How to Create a Pandas DataFrame</title><link href="https://blog.hedaro.com/Create-Pandas-DataFrame.html" rel="alternate"></link><published>2018-11-11T00:00:00-08:00</published><updated>2018-11-11T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-11:/Create-Pandas-DataFrame.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;

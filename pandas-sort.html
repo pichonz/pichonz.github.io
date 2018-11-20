@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Pandas Sort - How to Order Your Data &mdash; Hedaro Blog</title>
+  <title>Pandas Sort - How to Order Your DataFrame &mdash; Hedaro Blog</title>
   <meta name="author" content="David Rojas">
 
 
@@ -45,7 +45,7 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Pandas Sort - How to Order Your Data</h1>
+      <h1 class="entry-title">Pandas Sort - How to Order Your DataFrame</h1>
     <p class="meta">
 <time datetime="2018-11-14T00:00:00-08:00" pubdate>Wed 14 November 2018</time>    </p>
 </header>
@@ -125,7 +125,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This Notebook will cover all the techniques to quickly <strong><em>sort your data in Pandas</em></strong>. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an <strong><em>ascending</em></strong> or <strong><em>descending</em></strong> fashion, we have you covered.</p>
+<p>This Notebook will cover all the techniques to quickly <strong><em>sort your dataframe in Pandas</em></strong>. Whether you are looking to sort one or multiple columns. Or whether you are looking to order your data in an <strong><em>ascending</em></strong> or <strong><em>descending</em></strong> fashion, we have you covered.</p>
 <p>Let's start by importing our libraries.</p>
 </div>
 </div>
@@ -291,7 +291,7 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Sorting Data</h2>
+<h2>Pandas Sort by Column</h2>
 </div>
 </div>
 </div>
@@ -383,7 +383,7 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Pandas sorts your data ascending by default. But we can use the parameter called <strong>*ascending</strong> to order the data from largest to smallest or decending.</p>
+<p>Pandas sorts your data ascending by default. But we can use the parameter called <strong><em>ascending</em></strong> to order the data from largest to smallest or decending.</p>
 <ul>
 <li>ascending = <strong><em>True</em></strong> = smallest to largest</li>
 <li>ascending = <strong><em>False</em></strong> = largest to smallest</li>
@@ -960,7 +960,16 @@ Pandas: 0.23.4
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There was also an <strong><em>order</em></strong> method I explained a bit in the video but this has also been deprecated and we can simply use <strong><em>sort_values</em></strong> instead.</p>
+<h2>Pandas Sort Series</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There was also an <strong><em>order</em></strong> method I explained a bit in the video but this has also been deprecated and we can simply use <strong><em>sort_values</em></strong> instead. In an older version of Pandas order was used for a Pandas <strong><em>series</em></strong> since sort on;y worked for a dataframe. but like I mentioned, sort_values will work for both a dataframe and a series object.</p>
 <p>Don't forget to comment below and ask me any questions you may have on sorting.</p>
 </div>
 </div>
@@ -1014,7 +1023,7 @@ Pandas: 0.23.4
     <a class='category' href='https://blog.hedaro.com/category/pandas.html'>pandas</a>
   </span>
   <span class="categories">
-    <a class="category" href="https://blog.hedaro.com/tag/pandas-sort.html">pandas sort</a>  </span>
+    <a class="category" href="https://blog.hedaro.com/tag/pandas-sort.html">pandas sort</a>,    <a class="category" href="https://blog.hedaro.com/tag/pandas-sort-series.html">pandas sort series</a>,    <a class="category" href="https://blog.hedaro.com/tag/pandas-order.html">pandas order</a>,    <a class="category" href="https://blog.hedaro.com/tag/pandas-dataframe-order.html">pandas dataframe order</a>,    <a class="category" href="https://blog.hedaro.com/tag/pandas-sort-by-column.html">pandas sort by column</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -1032,16 +1041,16 @@ Pandas: 0.23.4
           <a href="https://blog.hedaro.com/styling-dataframe-tables.html">Styling Pandas Dataframe Tables</a>
       </li>
       <li class="post">
-          <a href="https://blog.hedaro.com/copy_from_clipboard.html">Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</a>
+          <a href="https://blog.hedaro.com/copy-from-clipboard.html">Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</a>
       </li>
       <li class="post">
-          <a href="https://blog.hedaro.com/pandas-sort.html">Pandas Sort - How to Order Your Data</a>
+          <a href="https://blog.hedaro.com/pandas-sort.html">Pandas Sort - How to Order Your DataFrame</a>
       </li>
       <li class="post">
           <a href="https://blog.hedaro.com/Create-Pandas-Visualization.html">Pandas Plot - How to Create a Basic Pandas Visualization</a>
       </li>
       <li class="post">
-          <a href="https://blog.hedaro.com/Create_Pandas_DataFrame.html">How to Create a Pandas DataFrame</a>
+          <a href="https://blog.hedaro.com/Create-Pandas-DataFrame.html">How to Create a Pandas DataFrame</a>
       </li>
     </ul>
   </section>
@@ -1056,7 +1065,7 @@ Pandas: 0.23.4
 
   <section>
   <h1>Tags</h1>
-    <a href="https://blog.hedaro.com/tag/pandas-dataframe-to_html-style.html">pandas dataframe to_html style</a>,    <a href="https://blog.hedaro.com/tag/dataframe-clipboard.html">dataframe clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort.html">pandas sort</a>,    <a href="https://blog.hedaro.com/tag/styling-dataframe-tables.html">styling dataframe tables</a>,    <a href="https://blog.hedaro.com/tag/styling-pandas-dataframe-tables.html">styling pandas dataframe tables</a>,    <a href="https://blog.hedaro.com/tag/matplotlib-pandas.html">matplotlib pandas</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe.html">pandas dataframe</a>,    <a href="https://blog.hedaro.com/tag/pandas-clipboard.html">pandas clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe-format.html">pandas dataframe format</a>,    <a href="https://blog.hedaro.com/tag/pandas-plot.html">pandas plot</a>,    <a href="https://blog.hedaro.com/tag/copy-from-clipboard.html">copy from clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-visualization.html">pandas visualization</a>,    <a href="https://blog.hedaro.com/tag/pandas-create-dataframe.html">pandas create dataframe</a>  </section>
+    <a href="https://blog.hedaro.com/tag/pandas-dataframe-order.html">pandas dataframe order</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort.html">pandas sort</a>,    <a href="https://blog.hedaro.com/tag/pandas-order.html">pandas order</a>,    <a href="https://blog.hedaro.com/tag/pandas-plot.html">pandas plot</a>,    <a href="https://blog.hedaro.com/tag/pandas-create-dataframe.html">pandas create dataframe</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort-series.html">pandas sort series</a>,    <a href="https://blog.hedaro.com/tag/pandas-clipboard.html">pandas clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe-format.html">pandas dataframe format</a>,    <a href="https://blog.hedaro.com/tag/copy-from-clipboard.html">copy from clipboard</a>,    <a href="https://blog.hedaro.com/tag/styling-dataframe-tables.html">styling dataframe tables</a>,    <a href="https://blog.hedaro.com/tag/matplotlib-pandas.html">matplotlib pandas</a>,    <a href="https://blog.hedaro.com/tag/pandas-visualization.html">pandas visualization</a>,    <a href="https://blog.hedaro.com/tag/dataframe-clipboard.html">dataframe clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort-by-column.html">pandas sort by column</a>,    <a href="https://blog.hedaro.com/tag/styling-pandas-dataframe-tables.html">styling pandas dataframe tables</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe.html">pandas dataframe</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe-to_html-style.html">pandas dataframe to_html style</a>  </section>
 
 
 
@@ -1083,7 +1092,7 @@ Pandas: 0.23.4
     var disqus_shortname = 'hedaro';
     var disqus_identifier = '/pandas-sort.html';
     var disqus_url = 'https://blog.hedaro.com/pandas-sort.html';
-    var disqus_title = 'Pandas Sort - How to Order Your Data';
+    var disqus_title = 'Pandas Sort - How to Order Your DataFrame';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
