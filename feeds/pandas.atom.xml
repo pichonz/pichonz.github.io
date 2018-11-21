@@ -3604,7 +3604,7 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Let's get a dataframe up and running. We will be using a Python dictionary to generate some dummy data for this lesson. If you are new to the Pandas world and are not yet comfortable with dataframes, please take a look at my blog, &lt;a href="https://blog.hedaro.com/Create_Pandas_DataFrame.html"&gt;how to create a dataframe&lt;/a&gt; before you continue this lesson.&lt;/p&gt;
+&lt;p&gt;Let's get a dataframe up and running. We will be using a Python dictionary to generate some dummy data for this lesson. If you are new to the Pandas world and are not yet comfortable with dataframes, please take a look at my blog, &lt;a href="https://blog.hedaro.com/Create-Pandas-DataFrame.html"&gt;how to create a dataframe&lt;/a&gt; before you continue this lesson.&lt;/p&gt;
 &lt;p&gt;After we print the dataframe, we will get two columns. The Rev columns are short for Revenue. So we have essentially two sets of revenue numbers.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4583,7 +4583,7 @@ MatPlotLib: 1.5.1
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Let's steamroll straight into creating our dataframe. We are going to be creating a Pandas dataframe out of a Python dictionary. If you haven't seen my blog on &lt;a href="https://blog.hedaro.com/Create_Pandas_DataFrame.html"&gt;creating Pandas dataframes&lt;/a&gt;, I encourage you to do that before moving on.&lt;/p&gt;
+&lt;p&gt;Let's steamroll straight into creating our dataframe. We are going to be creating a Pandas dataframe out of a Python dictionary. If you haven't seen my blog on &lt;a href="https://blog.hedaro.com/Create-Pandas-DataFrame.html"&gt;creating Pandas dataframes&lt;/a&gt;, I encourage you to do that before moving on.&lt;/p&gt;
 &lt;p&gt;Here we have a one column dataframe with a few numeric rows. This is the data we will be plotting.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6147,7 +6147,7 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2&gt; Python Lists &lt;/h2&gt;
+&lt;h2&gt; Python Lists&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6458,7 +6458,7 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2&gt;Dictionay to Dataframe&lt;/h2&gt;
+&lt;h2&gt;Dict to Dataframe&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6467,7 +6467,7 @@ Pandas: 0.23.4
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Luckily most of the steps to get a dictionary into a dataframe we have already done. It is actually even easier since we are going to ignore the columns parameter. Pandas is smart enough to know the column names are already provided in the Python dictionary.&lt;/p&gt;
+&lt;p&gt;Luckily most of the steps to get a dict into a dataframe we have already done. It is actually even easier since we are going to ignore the columns parameter. Pandas is smart enough to know the column names are already provided in the Python dictionary.&lt;/p&gt;
 &lt;p&gt;I didn't mention it before, but &lt;strong&gt;&lt;em&gt;pd&lt;/em&gt;&lt;/strong&gt; is the alias for the Pandas library. This alias is allowing us to reach into tha Pandas library and gives us access to all the methods and functions Pandas has to offer.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
