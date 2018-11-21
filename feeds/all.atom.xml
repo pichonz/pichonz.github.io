@@ -5443,7 +5443,7 @@ AAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2&gt;Styling your Visualizations&lt;/h2&gt;
+&lt;h2&gt;Styling your Pandas Visualization&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5457,7 +5457,7 @@ AAAAAElFTkSuQmCC
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;We start by adjusting the figure size. You can use the &lt;strong&gt;&lt;em&gt;figsize&lt;/em&gt;&lt;/strong&gt; parameter and select the width and height of your visualizations.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We can also pass into the plot function the &lt;strong&gt;&lt;em&gt;color&lt;/em&gt;&lt;/strong&gt; parameter and change the default line color of the plot.&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;We can also pass into the &lt;strong&gt;&lt;em&gt;plot&lt;/em&gt;&lt;/strong&gt; function the &lt;strong&gt;&lt;em&gt;color&lt;/em&gt;&lt;/strong&gt; parameter and change the default line color of the plot.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;The &lt;strong&gt;&lt;em&gt;set_title&lt;/em&gt;&lt;/strong&gt; function allows you to title your charts. You can also change the font size to your liking.&lt;/p&gt;
 &lt;/li&gt;
