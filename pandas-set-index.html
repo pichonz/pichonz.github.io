@@ -1,0 +1,3065 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Pandas Set Index &mdash; Hedaro Blog</title>
+  <meta name="author" content="David Rojas">
+  <meta name="description" content="The Ultimate guide to the Pandas set_index function. Having an index on your dataframes allow you to access additional features that you need to know about today." />
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="Nun_72ZONdpaGLCQBpbMYOWeJ6z2_OV-i_BLPkmPDf8" />
+
+   
+
+    <link href="https://blog.hedaro.com/favicon.png" rel="icon">
+
+  <link href="https://blog.hedaro.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <p style="font-size:42px;"><a href="https://blog.hedaro.com/" style="color:#f2f2f2;text-decoration: none;">Hedaro Blog</a></p>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Pandas Set Index</h1>
+    <p class="meta">
+<time datetime="2018-12-01T00:00:00-08:00" pubdate>Sat 01 December 2018</time>    </p>
+</header>
+
+  <div class="entry-content"><style type="text/css">/*!
+*
+* IPython notebook
+*
+*/.ansibold{font-weight:700}.ansiblack{}.ansired{color:#8b0000}.ansigreen{6400}.ansiyellow{color:#c4a000}.ansiblue{8b}.ansipurple{color:#9400d3}.ansicyan{color:#4682b4}.ansigray{color:gray}.ansibgblack{background-}.ansibgred{background-color:red}.ansibggreen{background-color:green}.ansibgyellow{background-color:#ff0}.ansibgblue{background-f}.ansibgpurple{background-color:#ff00ff}.ansibgcyan{background-ff}.ansibggray{background-color:gray}div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;border-radius:2px;box-sizing:border-box;-moz-box-sizing:border-box;border-width:thin;border-style:solid;width:100%;padding:5px;margin:0;outline:0}div.cell.selected{border-color:#ababab}@media print{div.cell.selected{border-color:transparent}}.edit_mode div.cell.selected{border-color:green}.prompt{min-width:14ex;padding:.4em;margin:0;font-family:monospace;text-align:right;line-height:1.21429em}div.inner_cell{display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}@-moz-document url-prefix(){div.inner_cell{overflow-x:hidden}}div.input_area{border:1px solid #cfcfcf;border-radius:2px;background:#f7f7f7;line-height:1.21429em}div.prompt:empty{padding-top:0;padding-bottom:0}div.unrecognized_cell{padding:5px 5px 5px 0;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}div.unrecognized_cell .inner_cell{border-radius:2px;padding:5px;font-weight:700;color:red;border:1px solid #cfcfcf;background:#eaeaea}div.unrecognized_cell .inner_cell a,div.unrecognized_cell .inner_cell a:hover{color:inherit;text-decoration:none}@media (max-width:540px){.prompt{text-align:left}div.unrecognized_cell>div.prompt{display:none}}div.code_cell{}div.input{page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}@media (max-width:540px){div.input{-webkit-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}}div.input_prompt{color:navy;border-top:1px solid transparent}div.input_area>div.highlight{margin:.4em;border:none;padding:0;background-color:transparent}div.input_area>div.highlight>pre{margin:0;border:none;padding:0;background-color:transparent}.CodeMirror{line-height:1.21429em;font-size:14px;height:auto;background:0 0}.CodeMirror-scroll{overflow-y:hidden;overflow-x:auto}.CodeMirror-lines{padding:.4em}.CodeMirror-linenumber{padding:0 8px 0 4px}.CodeMirror-gutters{border-bottom-left-radius:2px;border-top-left-radius:2px}.CodeMirror pre{padding:0;border:0;border-radius:0}.highlight-base,.highlight-variable{}.highlight-variable-2{color:#1a1a1a}.highlight-variable-3{color:#333}.highlight-string{color:#BA2121}.highlight-comment{color:#408080;font-style:italic}.highlight-number{80}.highlight-atom{color:#88F}.highlight-keyword{color:green;font-weight:700}.highlight-builtin{color:green}.highlight-error{color:red}.highlight-operator{color:#A2F;font-weight:700}.highlight-meta{color:#A2F}.highlight-def{f}.highlight-string-2{color:#f50}.highlight-qualifier{color:#555}.highlight-bracket{color:#997}.highlight-tag{color:#170}.highlight-attribute{c}.highlight-header{f}.highlight-quote{90}.highlight-link{c}.cm-s-ipython span.cm-keyword{color:green;font-weight:700}.cm-s-ipython span.cm-atom{color:#88F}.cm-s-ipython span.cm-number{80}.cm-s-ipython span.cm-def{f}.cm-s-ipython span.cm-variable{}.cm-s-ipython span.cm-operator{color:#A2F;font-weight:700}.cm-s-ipython span.cm-variable-2{color:#1a1a1a}.cm-s-ipython span.cm-variable-3{color:#333}.cm-s-ipython span.cm-comment{color:#408080;font-style:italic}.cm-s-ipython span.cm-string{color:#BA2121}.cm-s-ipython span.cm-string-2{color:#f50}.cm-s-ipython span.cm-meta{color:#A2F}.cm-s-ipython span.cm-qualifier{color:#555}.cm-s-ipython span.cm-builtin{color:green}.cm-s-ipython span.cm-bracket{color:#997}.cm-s-ipython span.cm-tag{color:#170}.cm-s-ipython span.cm-attribute{c}.cm-s-ipython span.cm-header{f}.cm-s-ipython span.cm-quote{90}.cm-s-ipython span.cm-link{c}.cm-s-ipython span.cm-error{color:red}.cm-s-ipython span.cm-tab{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=')right no-repeat}div.output_wrapper{display:-webkit-box;-webkit-box-align:stretch;display:-moz-box;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;z-index:1}div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:2px;-webkit-box-shadow:inset 0 2px 8px rgba(0,0,0,.8);box-shadow:inset 0 2px 8px rgba(0,0,0,.8);display:block}div.output_collapsed{margin:0;padding:0;display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}div.out_prompt_overlay{height:100%;padding:0 .4em;position:absolute;border-radius:2px}div.out_prompt_overlay:hover{-webkit-box-shadow:inset 0 0 1px #000;box-shadow:inset 0 0 1px #000;background:rgba(240,240,240,.5)}div.output_prompt{color:#8b0000}div.output_area{padding:0;page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}div.output_area .MathJax_Display{text-align:left!important}div.output_area div.output_area img,div.output_area svg{max-width:100%;height:auto}div.output_area img.unconfined,div.output_area svg.unconfined{max-width:none}.output{display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}@media (max-width:540px){div.output_area{-webkit-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}}div.output_area pre{margin:0;padding:0;border:0;vertical-align:baseline;background-color:transparent;border-radius:0}div.output_subarea{overflow-x:auto;padding:.4em;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1;max-width:calc(100% - 14ex)}div.output_text{text-align:left;line-height:1.21429em}div.output_stderr{background:#fdd}div.output_latex{text-align:left}div.output_javascript:empty{padding:0}.js-error{color:#8b0000}div.raw_input_container{font-family:monospace;padding-top:5px}span.raw_input_prompt{}input.raw_input{font-family:inherit;font-size:inherit;color:inherit;width:auto;vertical-align:baseline;padding:0 .25em;margin:0 .25em}input.raw_input:focus{box-shadow:none}p.p-space{margin-bottom:10px}div.output_unrecognized{padding:5px;font-weight:700;color:red}div.output_unrecognized a,div.output_unrecognized a:hover{color:inherit;text-decoration:none}.rendered_html{}.rendered_html :link,.rendered_html :visited,.rendered_html h1:first-child{margin-top:.538em}.rendered_html h2:first-child{margin-top:.636em}.rendered_html h3:first-child{margin-top:.777em}.rendered_html h4:first-child,.rendered_html h5:first-child,.rendered_html h6:first-child{margin-top:1em}.rendered_html *+ol,.rendered_html *+ul{margin-top:1em}.rendered_html *+table{margin-top:1em}.rendered_html *+p{margin-top:1em}.rendered_html *+img{margin-top:1em}div.text_cell{display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}@media (max-width:540px){div.text_cell>div.prompt{display:none}}div.text_cell_render{outline:0;resize:none;width:inherit;border-style:none;padding:.5em .5em .5em .4em;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}a.anchor-link:link{text-decoration:none;padding:0 20px;visibility:hidden}h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anchor-link,h5:hover .anchor-link,h6:hover .anchor-link{visibility:visible}.text_cell.rendered .input_area{display:none}.text_cell.rendered .text_cell.unrendered .text_cell_render{display:none}.cm-header-1,.cm-header-2,.cm-header-3,.cm-header-4,.cm-header-5,.cm-header-6{font-weight:700;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.cm-header-1{font-size:185.7%}.cm-header-2{font-size:157.1%}.cm-header-3{font-size:128.6%}.cm-header-4{font-size:110%}.cm-header-5,.cm-header-6{font-size:100%;font-style:italic}</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong><em>Pandas set_index</em></strong> function give you the ability to designate a column or field as the index. Having an index on your dataframes allow you to access additional features that we will be going over in this tutorial.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>RDBMS vs Pandas Index</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>It's worth mentioning that there is a difference when you talk about a database index versus a Pandas index.</p>
+</blockquote>
+<ul>
+<li><p><strong><em>RDBMS (relational database management system):</em></strong> 
+Tables in a database may contain an index. The index will be on a column or a set of columns that are in the table. An index will allow queries on columns that are part of the index to run faster. In the database world, indexes are used to help speed up queries. This is not how you should look at a Pandas index.</p>
+</li>
+<li><p><strong><em>Pandas:</em></strong>
+I would picture the Pandas index as a row identifier very similar to the one in an Excel spreadsheet. But with the difference that the Pandas index does not have to be unique for every value in the dataframe or series.</p>
+</li>
+</ul>
+<p>Also note that you should also not think of the index as a primary key in a database. As stated before the index does not have to be unique but in a database the primary key will always be unique. Note that a lot of people will treat the Pandas index as a unique identifier including mysef. You just have to be extra sure your index is unique since Pandas will not do that for you.</p>
+<p>Let's go over a simple example...</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here are the versions of these libraries I'm currently running on.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print library versions</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Python: '</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'|'</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Pandas: '</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Python: 3.5.1 
+Pandas: 0.23.4
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's start by creating a very simple data set. If you have looked at my other blog posts, you will notice I use a very similar key/val data set. It's simple and it usually allows me to show you a neat Pandas technique.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'key'</span><span class="p">:[</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">],</span>
+                   <span class="s1">'val'</span><span class="p">:[</span><span class="mi">234</span><span class="p">,</span><span class="mi">456</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="mi">3</span><span class="p">]})</span>
+
+<span class="c1">#print</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>key</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To see the index, you can just call the <strong><em>index</em></strong> method as shown below. At the moment Pandas is just using the default integer index. It starts at zero and then moves up incrementally.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>RangeIndex(start=0, stop=5, step=1)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can also get some index information from the <strong><em>.info()</em></strong> method.</p>
+<pre><code>RangeIndex: 5 entries, 0 to 4
+
+</code></pre>
+<p>It's similar to the .index results but the data is presented in a different way.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><class &amp;apos;pandas.core.frame.dataframe&amp;apos;>
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 2 columns):
+key    5 non-null object
+val    5 non-null int64
+dtypes: int64(1), object(1)
+memory usage: 160.0+ bytes
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we wanted to make the column named <strong><em>key</em></strong> the index, we then use the <strong><em>set_index function</em></strong> and pass in the name of the key column. Note that we have not changed the df dataframe at this point. If we wanted to actually apply the change to the df, you would have to pass the <strong><em>inplace=True</em></strong> parameter.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>234</td>
+</tr>
+<tr>
+<th>a</th>
+<td>456</td>
+</tr>
+<tr>
+<th>b</th>
+<td>7</td>
+</tr>
+<tr>
+<th>c</th>
+<td>57</td>
+</tr>
+<tr>
+<th>c</th>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just to show you that the dataframe has not changed, let's print it.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>key</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When I want to apply a new index to my dataframe, I simply set the df variable equal to the set_index command.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># setting te index</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>234</td>
+</tr>
+<tr>
+<th>a</th>
+<td>456</td>
+</tr>
+<tr>
+<th>b</th>
+<td>7</td>
+</tr>
+<tr>
+<th>c</th>
+<td>57</td>
+</tr>
+<tr>
+<th>c</th>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we now look at the .index and .info() methods, you will see things look a bit different. Our index now has a name (the name of the column key) and we are provided the actual values inside the index. The .info() method gives us more of a summary. It tells us that we have 5 rows in the index and that the values range from the letter a to the letter c.</p>
+<blockquote><p>Note that setting the index removed the column from the dataframe.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&apos;a&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;c&apos;], dtype=&apos;object&apos;, name=&apos;key&apos;)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><class &amp;apos;pandas.core.frame.dataframe&amp;apos;>
+Index: 5 entries, a to c
+Data columns (total 1 columns):
+val    5 non-null int64
+dtypes: int64(1)
+memory usage: 80.0+ bytes
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>How Do We Change the Index Name?</h3><p>We just saw that the index name will be equal to the name of the column we used as the input parameter. If you wanted to change the index name then keep reading to learn how.</p>
+<p>Index has a name method that when you call it, it simply gives you the name of the index as it currently stands.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get index name</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>&apos;key&apos;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But if we wanted to change it all we have to do is set it to a new name of your choice. In the example below, we will be using the word <strong><em>test</em></strong>. Notice that as soon as we set the name, we have commited the changes. In other words, the dataframe's index name has been changed.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set index name</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'test'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To verify the name change became effective as soon as you ran the code above, let's query the index once again. Perfect! the name changed as expected.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&apos;a&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;c&apos;], dtype=&apos;object&apos;, name=&apos;test&apos;)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will admit that I didn't know the technique below. But there is another way to change the index name and that is using the <strong><em>.rename_axis()</em></strong> method. Just pass in a string and your index name will be changed. Now the big difference here is that we need to set the df variable to the result of rename_axis or your dataframe's index name will not get changed. Again, it just takes time to remember what gets changed on a copy versus what gets changed in place.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># change the name of the index</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">'new'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Becuase I am usually on paranoid mode, I would double check everytihng looks good. Running the df.index command will confirm the name property was changed. Hooray!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&apos;a&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;c&apos;], dtype=&apos;object&apos;, name=&apos;new&apos;)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>What Does reset_index Do in Pandas?</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What if we wanted to revert back to our original dataframe. What if we didn't want the key column to be part of the index. Can we go back? Yes!</p>
+<p>This is what the <strong><em>.reset_index()</em></strong> function will do for us. It will essentially place our dataframe back to the default settings. In other words, it will remove any existing indexes and go back to the plain RangeIndex we had a few code cells ago.</p>
+<p>Let's give it a try.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It worked, but like I mentioned earlier, your actual dataframe did not change. Let me show you.</p>
+<p>Say what??? Yes, you have to pass in the <strong><em>inplace=True</em></strong> parameter to actually change the df variable. This might seem a bit annoying but the advantage is that you can do on the fly manipulations to your dataframe withought actually affecting your actual dataframe. You are esentially working off a copy of your data. I think this is pretty cool. You just have to be aware when you are working off a copy and when you are working off the actual dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>new</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>234</td>
+</tr>
+<tr>
+<th>a</th>
+<td>456</td>
+</tr>
+<tr>
+<th>b</th>
+<td>7</td>
+</tr>
+<tr>
+<th>c</th>
+<td>57</td>
+</tr>
+<tr>
+<th>c</th>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another interesting twist of events is the column name. We started with a column named <strong>key</strong>, it then became the index, and finally we brougt it back as a column. But it came back with a different name. I thought we were resetting the darn thing! We are but I guess we are not exactly undoing our work. Pandas does not know we just changed the name of the index. It will just simply use the current name and use that to name the column. So just note that if you have modified the name of the dataframe's index, your column name will change if you move the data back to a column.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>How to Reset the Index After a GroupBy Operation</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>GroupBy opreations are pretty common and there are times were you may want to reset the index. Here is an example.</p>
+<p>Let's do a basic group by sum and place the resulting dataframe in a new vaiable we will call <strong><em>df_sum</em></strong>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># groupby sum</span>
+<span class="n">df_sum</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'new'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_sum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>new</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>690</td>
+</tr>
+<tr>
+<th>b</th>
+<td>7</td>
+</tr>
+<tr>
+<th>c</th>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looking at the results from the two code cells below, we can see that the column we just grouped by (column new) is now the index of df_sum. So when you do a groupby operation, you are also creating a new index.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_sum</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;], dtype=&apos;object&apos;, name=&apos;new&apos;)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><class &amp;apos;pandas.core.frame.dataframe&amp;apos;>
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 2 columns):
+new    5 non-null object
+val    5 non-null int64
+dtypes: int64(1), object(1)
+memory usage: 160.0+ bytes
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you probably have already guessed, by applying the <strong><em>.reset_index()</em></strong> method, we retain the result of the groupby but bring the index back into the column area.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_sum</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>690</td>
+</tr>
+<tr>
+<th>1</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>2</th>
+<td>c</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For those that are wondering... yes, the df variable has not changed.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And yes, we cold have performed all of this using a one liner as shown below. Ninja stuff right there.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'new'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>690</td>
+</tr>
+<tr>
+<th>1</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>2</th>
+<td>c</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Can we also Rename the Index on the Fly?</h3><p>Let's say you didn't want the column to be called <strong>new</strong> and wanted it t be caled <strong>val</strong>. The code below will make that happen.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'new'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>key</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>690</td>
+</tr>
+<tr>
+<th>1</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>2</th>
+<td>c</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For those still not convinced, we still have not touched the df variable.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>How Can I Keep the Column After the Index is Set?</h3><p>By default, Pandas will drop the column that will become the index. If you still wanted to keep the column in place, we need to set the <strong><em>drop parameter</em></strong> to False.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [27]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># keep index column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'new'</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+<tr>
+<th>new</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>a</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>b</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>c</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>c</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>How Can I Add a new Column as the Index?</h3><p>Like I have shown already, we usually get a new index from a column we already have. But there are enough of you who have wondered how to add a new column as the index. Let's go through an example to see what I mean.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># our current dataframe</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The trick to get it to work is to put the new column inside a Python list. Let's create a variable named key. Make sure the length of the new column matches the length of the existing dataframe. Making the new column shorter or longer will return an error.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># new column that will become the index</span>
+<span class="n">key</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'d'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">]</span>
+<span class="n">key</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[&apos;d&apos;, &apos;d&apos;, &apos;d&apos;, &apos;e&apos;, &apos;e&apos;]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You must put the variable <strong><em>key</em></strong> inside a list for this to work.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a new index using the key variable</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="n">key</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>d</th>
+<td>a</td>
+<td>234</td>
+</tr>
+<tr>
+<th>d</th>
+<td>a</td>
+<td>456</td>
+</tr>
+<tr>
+<th>d</th>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<th>e</th>
+<td>c</td>
+<td>57</td>
+</tr>
+<tr>
+<th>e</th>
+<td>c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Is There a Way to Sort the Index?</h3><p>We've already learned about <a href="https://blog.hedaro.com/pandas-sort.html">sorting dataframes in a previous blog</a>. But what about sorting an index? Is there a difference? Well yes, that's why I'm bringing it up. Pandas provides us with the <strong><em>.sort_index()</em></strong> function to do just that.</p>
+<p>The code below will sort the index descending. Not that bad...</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'new'</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>new</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>c</th>
+<td>57</td>
+</tr>
+<tr>
+<th>c</th>
+<td>3</td>
+</tr>
+<tr>
+<th>b</th>
+<td>7</td>
+</tr>
+<tr>
+<th>a</th>
+<td>234</td>
+</tr>
+<tr>
+<th>a</th>
+<td>456</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>How Do We Create an Index Using Multiple Columns?</h2><p>There are times were you may want to get a little crazy and venture into the hierarchical madness. I'm making a big fuss because things tend to get trickier as soon as you start to go beyond the basics. Luckily making multiple columns your new index is not so bad.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are going to need to add a third column to make this example work. The goal here is to make the columns new and color be the new index of our dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add a third column</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'orange'</span><span class="p">,</span><span class="s1">'orange'</span><span class="p">,</span><span class="s1">'orange'</span><span class="p">,</span><span class="s1">'blue'</span><span class="p">,</span><span class="s1">'blue'</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+<td>orange</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+<td>orange</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+<td>orange</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+<td>blue</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+<td>blue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we place the column names in a list, voila! We have our multi index.</p>
+<blockquote><p>Now go ahead and flex your muscles, you are crushing it! (I make myself laugh all the time)</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'new'</span><span class="p">,</span><span class="s1">'color'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>new</th>
+<th>color</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="2" valign="top">a</th>
+<th>orange</th>
+<td>234</td>
+</tr>
+<tr>
+<th>orange</th>
+<td>456</td>
+</tr>
+<tr>
+<th>b</th>
+<th>orange</th>
+<td>7</td>
+</tr>
+<tr>
+<th rowspan="2" valign="top">c</th>
+<th>blue</th>
+<td>57</td>
+</tr>
+<tr>
+<th>blue</th>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Why Index Matters When Plotting</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So I made you go thorugh a bunch of examples to get to plotting. And this is a very clear example of when having an index matters.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># turn on inline plotting</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's plot df and see what happens.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>new</th>
+<th>val</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>a</td>
+<td>234</td>
+<td>orange</td>
+</tr>
+<tr>
+<th>1</th>
+<td>a</td>
+<td>456</td>
+<td>orange</td>
+</tr>
+<tr>
+<th>2</th>
+<td>b</td>
+<td>7</td>
+<td>orange</td>
+</tr>
+<tr>
+<th>3</th>
+<td>c</td>
+<td>57</td>
+<td>blue</td>
+</tr>
+<tr>
+<th>4</th>
+<td>c</td>
+<td>3</td>
+<td>blue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pandas decided to plot the column that contains numbers. That makes sense.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># simple plot</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+gg==
+">
+</img></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wouldn't it be nice if we can use the <strong><em>color</em></strong> column as the values for the X axis? And this is where the light bulbs should turn on for you. Do you see where I'm going here?</p>
+<p>Yes, if we make the color column the index, Pandas will place it in the X axis of the plot. Very nice!</p>
+<p>If you missed my <a href="https://blog.hedaro.com/Create-Pandas-Visualization.html">blog on creating plots with Pandas</a>, don't forget to check it out.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'color'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+sSTnjLfPGe+fbAwAAAC2LQt8AQAAQGfv6T6wtbZYVfdV1VlrZpcPJbl9vH0syblJ7loztvBgz3nk
+yJHMzMwkSebn5zM/P3+65QEAAMDfsbCwkIWF1Vg6Go0e9Nxqra37iavqaJLvb63dPN6/Ksmx1tqb
+quoZSa5Ncqi1dqKqLk9ybmvt0qo6nOTGJE9trS2e5HlnkywtLS1ldnZ23fVM2/Lycubm5pIsJdk5
+de9sy0nmstN6ZSfT59OgzwEAJu2Bn3Mz11pb7sfX+9FRV1bVHUkOJlmoqlvGQ29M8h3j/auSXNJa
+OzEee1uSR1fVp5Ncl+SykwVlAAAA2G7WdRl2a+11pzh+d5KTXivdWrs3yctOvzQAAACYDgt8AQAA
+QEdYBgAAgI6wDAAAAB1hGQAAADrCMgAAAHSEZQAAAOgIywAAANARlgEAAKAjLAMAAEBHWAYAAICO
+sAwAAAAdYRkAAAA6wjIAAAB0hGUAAADoCMsAAADQEZYBAACgIywDAABAR1gGAACAjrAMAAAAHWEZ
+AAAAOsIyAAAAdPZOuwAAALbGyspKRqPRtMsYlJmZmezbt2/aZQCnQVgGABiAlZWVHDx4OIuLd067
+lEHZv/9Ajh8/KjDDDiQsAwAMwGg0GgflO5LMTrucgVjO4uLZGY1GwjLsQMIyAMCgzEZYBnhoFvgC
+AACAjrAMAAAAHWEZAAAAOsIyAAAAdIRlAAAA6AjLAAAA0BGWAQAAoCMsAwAAQEdYBgAAgI6wDAAA
+AB1hGQAAADrCMgAAAHSEZQAAAOgIywAAANARlgEAAKAjLAMAAEBHWAYAAICOsAwAAAAdYRkAAAA6
+wjIAAAB0hGUAAADoCMsAAADQEZYBAACgIywDAABAR1gGAACAjrAMAAAAHWEZAAAAOnunXQAAbAcr
+KysZjUbTLmNQZmZmsm/fvmmXAQAnNfGwXFV/P8l7kjw2yV8leXVr7c8m/boAsF4rKys5ePBwFhfv
+nHYpg7J//4EcP35UYAZgW9qKmeV3JLmytXZ1VV2U1eD8zC14XR7SQpL5aRcBE6bPeWij0WgclO9I
+Mjvtck7Dbyd57rSL2KDlLC6endFoJCyzTr6fs/stLCxkfl6fbxcTDctVdWaSb03yj5OktfbrVXVF
+VT2htfYXk3xt1sP/dBgCfc5GzGZnhuXfS/ID0y4CJsz3c9ZnJ99W86EPfSjnn3/+tMvYsN16W82k
+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
+gg==
+">
+</img></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4>Concluding with Dates</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I wanted to end the tutorial at plotting, but dates and the index have to be included in this conversation. See, as soon as you place a datetime column into the index spot, you now have the ability to slice and dice your data like you never have been able before. What do I mean? Let's get an example going.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a df with a date column</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'key'</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">'2018-11-25'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">'2018-12-02'</span><span class="p">),</span>
+                   <span class="s1">'val'</span><span class="p">:[</span><span class="mi">234</span><span class="p">,</span><span class="mi">456</span><span class="p">,</span><span class="mi">768</span><span class="p">,</span><span class="mi">435</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">]})</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>key</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2018-11-25</td>
+<td>234</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2018-11-26</td>
+<td>456</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2018-11-27</td>
+<td>768</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2018-11-28</td>
+<td>435</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2018-11-29</td>
+<td>34</td>
+</tr>
+<tr>
+<th>5</th>
+<td>2018-11-30</td>
+<td>76</td>
+</tr>
+<tr>
+<th>6</th>
+<td>2018-12-01</td>
+<td>4</td>
+</tr>
+<tr>
+<th>7</th>
+<td>2018-12-02</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can see the column named <strong><em>key</em></strong> contains dates.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><class &amp;apos;pandas.core.frame.dataframe&amp;apos;>
+RangeIndex: 8 entries, 0 to 7
+Data columns (total 2 columns):
+key    8 non-null datetime64[ns]
+val    8 non-null int64
+dtypes: datetime64[ns](1), int64(1)
+memory usage: 208.0 bytes
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we then set the index equal to key. This is where the magic happens.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set column as index</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2018-11-25</th>
+<td>234</td>
+</tr>
+<tr>
+<th>2018-11-26</th>
+<td>456</td>
+</tr>
+<tr>
+<th>2018-11-27</th>
+<td>768</td>
+</tr>
+<tr>
+<th>2018-11-28</th>
+<td>435</td>
+</tr>
+<tr>
+<th>2018-11-29</th>
+<td>34</td>
+</tr>
+<tr>
+<th>2018-11-30</th>
+<td>76</td>
+</tr>
+<tr>
+<th>2018-12-01</th>
+<td>4</td>
+</tr>
+<tr>
+<th>2018-12-02</th>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's filter by all the dates in December.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'2018-12'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2018-12-01</th>
+<td>4</td>
+</tr>
+<tr>
+<th>2018-12-02</th>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's filter by all the dates in November.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [42]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'2018-11'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[42]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2018-11-25</th>
+<td>234</td>
+</tr>
+<tr>
+<th>2018-11-26</th>
+<td>456</td>
+</tr>
+<tr>
+<th>2018-11-27</th>
+<td>768</td>
+</tr>
+<tr>
+<th>2018-11-28</th>
+<td>435</td>
+</tr>
+<tr>
+<th>2018-11-29</th>
+<td>34</td>
+</tr>
+<tr>
+<th>2018-11-30</th>
+<td>76</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What about selecting dates between November 26th and November 29th? Crazy amazing! You can even filter by year alone.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [43]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'2018-11-26'</span><span class="p">:</span><span class="s1">'2018-11-29'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[43]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>val</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2018-11-26</th>
+<td>456</td>
+</tr>
+<tr>
+<th>2018-11-27</th>
+<td>768</td>
+</tr>
+<tr>
+<th>2018-11-28</th>
+<td>435</td>
+</tr>
+<tr>
+<th>2018-11-29</th>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I hope I've blown your head with all of these possibilities. It's the amazing and at times frustrating thing about Pandas.</p>
+<blockquote><p>There are so many ways to perform the same action that it starts taking an art form.</p>
+</blockquote>
+<p>This is it for now, if you have any questions go ahead and leave me a comment below.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p class="text-muted">This tutorial was created by <a href="http://www.hedaro.com" target="_blank"><strong>HEDARO</strong></a></p>
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+</div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        David Rojas
+    </span>
+  </span>
+<time datetime="2018-12-01T00:00:00-08:00" pubdate>Sat 01 December 2018</time>  <span class="categories">
+    <a class='category' href='https://blog.hedaro.com/category/pandas.html'>pandas</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="https://blog.hedaro.com/tag/pandas-set-index.html">pandas set index</a>,    <a class="category" href="https://blog.hedaro.com/tag/pandas-set-column-as-index.html">pandas set column as index</a>,    <a class="category" href="https://blog.hedaro.com/tag/python-pandas-reset-index.html">python pandas reset index</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h3>Comments</h3>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h3>Recent Posts</h3>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="https://blog.hedaro.com/pandas-set-index.html">Pandas Set Index</a>
+      </li>
+      <li class="post">
+          <a href="https://blog.hedaro.com/pandas-sql.html">Pandas SQL - How to Connect to Microsoft SQL Server</a>
+      </li>
+      <li class="post">
+          <a href="https://blog.hedaro.com/styling-dataframe-tables.html">Styling Pandas Dataframe Tables</a>
+      </li>
+      <li class="post">
+          <a href="https://blog.hedaro.com/copy-from-clipboard.html">Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</a>
+      </li>
+      <li class="post">
+          <a href="https://blog.hedaro.com/pandas-sort.html">Pandas Sort - How to Order Your DataFrame</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h3>Categories</h3>
+    <ul id="recent_posts">
+        <li><a href="https://blog.hedaro.com/category/pandas.html">pandas</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h3>Tags</h3>
+    <a href="https://blog.hedaro.com/tag/pandas-sql.html">pandas sql</a>,    <a href="https://blog.hedaro.com/tag/matplotlib-pandas.html">matplotlib pandas</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort-series.html">pandas sort series</a>,    <a href="https://blog.hedaro.com/tag/copy-from-clipboard.html">copy from clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe-to_html-style.html">pandas dataframe to_html style</a>,    <a href="https://blog.hedaro.com/tag/pandas-set-index.html">pandas set index</a>,    <a href="https://blog.hedaro.com/tag/pandas-sql-query.html">pandas sql query</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe-order.html">pandas dataframe order</a>,    <a href="https://blog.hedaro.com/tag/pandas-clipboard.html">pandas clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-create-dataframe.html">pandas create dataframe</a>,    <a href="https://blog.hedaro.com/tag/python-pandas-reset-index.html">python pandas reset index</a>,    <a href="https://blog.hedaro.com/tag/dataframe-clipboard.html">dataframe clipboard</a>,    <a href="https://blog.hedaro.com/tag/pandas-set-column-as-index.html">pandas set column as index</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe-format.html">pandas dataframe format</a>,    <a href="https://blog.hedaro.com/tag/pandas-to-sql.html">pandas to sql</a>,    <a href="https://blog.hedaro.com/tag/styling-pandas-dataframe-tables.html">styling pandas dataframe tables</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort-by-column.html">pandas sort by column</a>,    <a href="https://blog.hedaro.com/tag/pandas-visualization.html">pandas visualization</a>,    <a href="https://blog.hedaro.com/tag/pandas-dataframe.html">pandas dataframe</a>,    <a href="https://blog.hedaro.com/tag/pandas-sort.html">pandas sort</a>,    <a href="https://blog.hedaro.com/tag/pandas-plot.html">pandas plot</a>,    <a href="https://blog.hedaro.com/tag/pandas-read-sql.html">pandas read sql</a>,    <a href="https://blog.hedaro.com/tag/styling-dataframe-tables.html">styling dataframe tables</a>,    <a href="https://blog.hedaro.com/tag/pandas-order.html">pandas order</a>  </section>
+
+
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2018  David Rojas &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+  <script src="https://blog.hedaro.com/theme/js/modernizr-2.0.js"></script>
+  <script src="https://blog.hedaro.com/theme/js/ender.js"></script>
+  <script src="https://blog.hedaro.com/theme/js/octopress.js" type="text/javascript"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-72322029-1', 'auto');
+
+    ga('send', 'pageview');
+    </script>
+  <script type="text/javascript">
+    var disqus_shortname = 'hedaro';
+    var disqus_identifier = '/pandas-set-index.html';
+    var disqus_url = 'https://blog.hedaro.com/pandas-set-index.html';
+    var disqus_title = 'Pandas Set Index';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</body>
+</html>
