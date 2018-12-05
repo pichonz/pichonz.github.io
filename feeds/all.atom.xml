@@ -2974,7 +2974,7 @@ memory usage: 208.0 bytes
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas set index"></category><category term="pandas set column as index"></category><category term="python pandas reset index"></category></entry><entry><title>Pandas SQL - How to Connect to Microsoft SQL Server</title><link href="https://blog.hedaro.com/pandas-sql.html" rel="alternate"></link><published>2018-11-22T00:00:00-08:00</published><updated>2018-11-22T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-22:/pandas-sql.html</id><summary type="html">
+</content></entry><entry><title>Pandas SQL - How to Connect to Microsoft SQL Server</title><link href="https://blog.hedaro.com/pandas-sql.html" rel="alternate"></link><published>2018-11-22T00:00:00-08:00</published><updated>2018-11-22T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-22:/pandas-sql.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -7422,7 +7422,7 @@ oooAKKKKACiiigAooooAKKKKAP/Z
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas read sql"></category><category term="pandas sql"></category><category term="pandas to sql"></category><category term="pandas sql query"></category></entry><entry><title>Styling Pandas Dataframe Tables</title><link href="https://blog.hedaro.com/styling-dataframe-tables.html" rel="alternate"></link><published>2018-11-18T00:00:00-08:00</published><updated>2018-11-18T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-18:/styling-dataframe-tables.html</id><summary type="html">
+</content></entry><entry><title>Styling Pandas Dataframe Tables</title><link href="https://blog.hedaro.com/styling-dataframe-tables.html" rel="alternate"></link><published>2018-11-18T00:00:00-08:00</published><updated>2018-11-18T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-18:/styling-dataframe-tables.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -8103,7 +8103,7 @@ Pandas: 0.23.4
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas dataframe to_html style"></category><category term="pandas dataframe format"></category><category term="styling pandas dataframe tables"></category><category term="styling dataframe tables"></category></entry><entry><title>Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</title><link href="https://blog.hedaro.com/copy-from-clipboard.html" rel="alternate"></link><published>2018-11-17T00:00:00-08:00</published><updated>2018-11-17T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-17:/copy-from-clipboard.html</id><summary type="html">
+</content></entry><entry><title>Copy from Clipboard - Learn how to Go from Clipboard to DataFrame Fast!</title><link href="https://blog.hedaro.com/copy-from-clipboard.html" rel="alternate"></link><published>2018-11-17T00:00:00-08:00</published><updated>2018-11-17T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-17:/copy-from-clipboard.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -11829,7 +11829,7 @@ Pandas: 0.23.4
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas sort"></category><category term="pandas sort series"></category><category term="pandas order"></category><category term="pandas dataframe order"></category><category term="pandas sort by column"></category></entry><entry><title>Pandas Plot - How to Create a Basic Pandas Visualization</title><link href="https://blog.hedaro.com/Create-Pandas-Visualization.html" rel="alternate"></link><published>2018-11-12T00:00:00-08:00</published><updated>2018-11-12T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-12:/Create-Pandas-Visualization.html</id><summary type="html">
+</content></entry><entry><title>Pandas Plot - How to Create a Basic Pandas Visualization</title><link href="https://blog.hedaro.com/Create-Pandas-Visualization.html" rel="alternate"></link><published>2018-11-12T00:00:00-08:00</published><updated>2018-11-12T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-12:/Create-Pandas-Visualization.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -13402,7 +13402,7 @@ IiIiIiIeqCAXERERERER8UAFuYiIiIiIiIgH/x/rvpNQTFNEBwAAAABJRU5ErkJggg==
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas plot"></category><category term="pandas visualization"></category><category term="matplotlib pandas"></category></entry><entry><title>How to Create a Pandas DataFrame</title><link href="https://blog.hedaro.com/Create-Pandas-DataFrame.html" rel="alternate"></link><published>2018-11-11T00:00:00-08:00</published><updated>2018-11-11T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-11:/Create-Pandas-DataFrame.html</id><summary type="html">
+</content></entry><entry><title>How to Create a Pandas DataFrame</title><link href="https://blog.hedaro.com/Create-Pandas-DataFrame.html" rel="alternate"></link><published>2018-11-11T00:00:00-08:00</published><updated>2018-11-11T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-11:/Create-Pandas-DataFrame.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -14161,4 +14161,4 @@ Pandas: 0.23.4
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas dataframe"></category><category term="pandas create dataframe"></category></entry></feed>
+</content></entry></feed>
