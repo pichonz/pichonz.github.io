@@ -10856,7 +10856,7 @@ memory usage: 608.0+ bytes
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pandas clipboard"></category><category term="dataframe clipboard"></category><category term="copy from clipboard"></category></entry><entry><title>Pandas Sort - How to Order Your DataFrame</title><link href="https://blog.hedaro.com/pandas-sort.html" rel="alternate"></link><published>2018-11-14T00:00:00-08:00</published><updated>2018-11-14T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-14:/pandas-sort.html</id><summary type="html">
+</content></entry><entry><title>Pandas Sort - How to Order Your DataFrame</title><link href="https://blog.hedaro.com/pandas-sort.html" rel="alternate"></link><published>2018-11-14T00:00:00-08:00</published><updated>2018-11-14T00:00:00-08:00</updated><author><name>David Rojas</name></author><id>tag:blog.hedaro.com,2018-11-14:/pandas-sort.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
